@@ -35,7 +35,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:maxLines="2"
-                android:text="울산 동해오션뷰 60평 복층 펜트하우스 1일 숙박권 펜션 힐링 숙소 별장"
+                android:ellipsize="end"
+                android:text="울산 동해오션뷰 60평 복층 펜트하우스 1일 숙박권 펜션 힐링 숙소 별장      ㄷ"
                 android:textSize="16sp" />
 
             <TextView
