@@ -180,6 +180,7 @@ class MainActivity : AppCompatActivity() {
         val myAdapter = MyAdapter(itemList)
         binding.recyclerView.adapter = myAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        // RecyclerView Divider 추가
         binding.recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
 
 
@@ -190,13 +191,15 @@ class MainActivity : AppCompatActivity() {
             if (result.resultCode == Activity.RESULT_OK) {
                 val returnLiked = result.data?.getBooleanExtra(BOOLEAN_INTENT_KEY, false) ?: false
                 val returnPosition = result.data?.getIntExtra(INT_INTENT_KEY, 0) ?: 0
-                itemList[returnPosition].mItemIsLiked = returnLiked
                 if (returnLiked) {
                     itemList[returnPosition].mItemLike += 1
+                    itemList[returnPosition].mItemIsLiked = true
                 } else {
-                    itemList[returnPosition].mItemLike -= 1
+                    if (itemList[returnPosition].mItemIsLiked){
+                        itemList[returnPosition].mItemLike -= 1
+                        itemList[returnPosition].mItemIsLiked = false
+                    }
                 }
-                Log.d("TAG", " item like 수 : ${itemList[returnPosition].mItemLike}")
                 myAdapter.notifyItemChanged(returnPosition)
             }
         }
@@ -224,7 +227,6 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra("data", itemList[position])
                 intent.putExtra("itemPosition", position)
-                Log.d("TAG", "mainPageItemPosition : ${intent.getIntExtra("itemPosition", 0)}")
                 getResult.launch(intent)
 //                intent.run { context.startActivity(this) }
             }

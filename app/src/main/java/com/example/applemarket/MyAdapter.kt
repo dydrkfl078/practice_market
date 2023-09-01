@@ -54,14 +54,6 @@ class MyAdapter(private val mItems: MutableList<ItemData>) :
                 holder.itemLikeIcon.setImageResource(R.drawable.heart_120)
             }
         }
-//        holder.itemImage.setImageResource(mItems[position].mItemImage)
-//        holder.itemImage.clipToOutline = true // 이미지 크기 조정
-//        holder.itemName.text = mItems[position].mItemName
-//        holder.itemAddress.text = mItems[position].mItemAddress
-//        holder.itemLikeBtn.setIm~~~~ if
-//        holder.itemComment.text = mItems[position].mItemComment.toString()
-//        holder.itemLike.text = mItems[position].mItemLike.toString()
-//        holder.itemPrice.text = MakeComma.makeComma(mItems[position].mItemPrice) + "원"
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
